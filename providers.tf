@@ -7,7 +7,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "bootcamp-devops-backend-terraform"
+    bucket = "devops-bootcamp-backend-terraform"
     key    = "dev/terraform.tfstate"
     region = "ap-southeast-1"
     # profile = "mms"
