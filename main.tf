@@ -8,12 +8,12 @@ module "vpc" {
 }
 
 module "ec2" {
-  source             = "./modules/ec2"
-  vpc_id             = module.vpc.vpc_id
-  public_subnet_1_id = module.vpc.public_subnet_1_id
-  project_name       = var.project_name
-  environment        = var.environment
-  instance_type      = var.instance_type
+  source                    = "./modules/ec2"
+  vpc_id                    = module.vpc.vpc_id
+  public_subnet_1_id        = module.vpc.public_subnet_1_id
+  project_name              = var.project_name
+  environment               = var.environment
+  instance_type             = var.instance_type
   iam_instance_profile_name = module.iam.instance_profile_name
   depends_on = [
     module.iam
@@ -35,23 +35,23 @@ module "alb" {
 }
 
 module "iam" {
-  source          = "./modules/iam"
-  policy_name     = var.policy_name
-  ec2_role_name = var.ec2_role_name
+  source                    = "./modules/iam"
+  policy_name               = var.policy_name
+  ec2_role_name             = var.ec2_role_name
   ec2_instance_profile_name = var.instance_profile_name
 }
 
 module "db" {
-  source = "./modules/rds"
-  vpc_id = module.vpc.vpc_id
-  private_subnet_1 = module.vpc.private_subnet_1_id
-  private_subnet_2 = module.vpc.private_subnet_2_id
-  project_name = var.project_name
-  environment = var.environment
-  db_name = var.db_name
-  db_engine = var.db_engine
+  source            = "./modules/rds"
+  vpc_id            = module.vpc.vpc_id
+  private_subnet_1  = module.vpc.private_subnet_1_id
+  private_subnet_2  = module.vpc.private_subnet_2_id
+  project_name      = var.project_name
+  environment       = var.environment
+  db_name           = var.db_name
+  db_engine         = var.db_engine
   db_engine_version = var.db_engine_version
   db_instance_class = var.db_instance_class
-  db_user = var.db_user
-  db_manage_master_user_password = var.db_manage_master_user_password
+  db_user           = var.db_user
+  db_password       = var.db_password
 }

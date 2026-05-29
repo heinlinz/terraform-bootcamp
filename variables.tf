@@ -67,21 +67,21 @@ variable "alb_name" {
 ############################################
 
 variable "policy_name" {
-    description = "IAM Policy Name"
-    type = string
-    default = ""
+  description = "IAM Policy Name"
+  type        = string
+  default     = ""
 }
 
 variable "instance_profile_name" {
-    description = "Instance Profile Name"
-    type = string
-    default = ""
+  description = "Instance Profile Name"
+  type        = string
+  default     = ""
 }
 
 variable "ec2_role_name" {
-    description = "EC2 Role Name"
-    type = string
-    default = ""
+  description = "EC2 Role Name"
+  type        = string
+  default     = ""
 }
 
 
@@ -105,6 +105,7 @@ variable "db_user" {
   type = string
 }
 
-variable "db_manage_master_user_password" {
-  type = bool
+variable "db_password" {
+  type      = string
+  sensitive = true
 }

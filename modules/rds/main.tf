@@ -1,4 +1,3 @@
-
 resource "aws_security_group" "db_sg" {
   name        = "${var.project_name}-db-sg"
   description = "Allow MySQL traffic"
@@ -58,12 +57,13 @@ resource "aws_db_instance" "app-db" {
   engine_version                = var.db_engine_version
   instance_class                = var.db_instance_class
   username                      = var.db_user
-  manage_master_user_password   = var.db_manage_master_user_password
+  password                      = var.db_password
   parameter_group_name          = aws_db_parameter_group.mysql.name
   skip_final_snapshot           = true
   db_subnet_group_name          = aws_db_subnet_group.private.name
   vpc_security_group_ids        = [aws_security_group.db_sg.id]
   publicly_accessible           = false
+  storage_encrypted            = true
   tags = {
     Name        = var.project_name
     Environment = var.environment

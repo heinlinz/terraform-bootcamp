@@ -38,6 +38,7 @@ variable "db_user" {
   type = string
 }
 
-variable "db_manage_master_user_password" {
-  type = bool
+variable "db_password" {
+  type = string
+  sensitive = true
 }
