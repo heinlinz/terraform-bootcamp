@@ -70,6 +70,7 @@ This Terraform configuration creates a multi-tier AWS architecture with the foll
 - Auto-scaling EC2 instances in public subnets
 - Nginx configured as reverse proxy and web server
 - Custom AMI with pre-installed application stack
+- AMI is built with Packer from `https://github.com/heinlinz/custom-ami-packer.git`
 - IAM instance profile for secure AWS service access
 - Security groups controlling inbound/outbound traffic
 
